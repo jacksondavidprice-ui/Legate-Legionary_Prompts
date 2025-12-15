@@ -1,0 +1,219 @@
+User Instructions
+Initial Setup
+
+Start the Agents:
+
+One Commander process (give it the Commander prompt above)
+One process per Soldier (give each the Soldier prompt above)
+Each Soldier should have a unique name/ID
+That's it! Soldiers will automatically detect the OS and set up file watching.
+
+
+Initialize Soldier Profiles:
+
+Edit each Soldier's profile.json to define their specialty
+Examples:
+
+Soldier-1: Frontend (React, UI, CSS)
+Soldier-2: Backend (Node.js, Express, APIs)
+Soldier-3: Database (SQL, migrations, queries)
+Soldier-4: Testing (Jest, integration tests, QA)
+
+
+
+
+
+Note: You do NOT need to manually set up file watching. Each Soldier will automatically:
+
+Detect what operating system it's running on
+Choose the most efficient file watching method available
+Set up continuous monitoring of its task.json file
+Handle all the technical details without your intervention
+
+How to Use
+Only interact with the Commander. Never prompt Soldiers directly.
+
+Describe goals, not implementation:
+
+✓ "Add user authentication to the app"
+✓ "Fix the bug where the dashboard crashes on load"
+✗ "Modify src/App.js line 47 to add a useEffect hook"
+
+
+Let Commander orchestrate:
+
+Commander will break down your request
+Commander will assign tasks to appropriate Soldiers
+Commander will handle coordination
+
+
+Get status updates:
+
+Ask Commander: "What's the status on the authentication feature?"
+Commander will aggregate Soldier logs and respond
+
+
+Change global behavior:
+
+Tell Commander about workflow preferences
+Commander will update rules.md
+All Soldiers will automatically pick up changes on next task
+
+
+Trust the system:
+
+Soldiers work autonomously
+They maintain detailed logs
+Commander aggregates everything for you
+
+
+
+Best Practices
+For Debugging Issues:
+
+Be clear about symptoms: "Dashboard shows blank page on load"
+Provide reproduction steps if you have them
+Let Commander assign debugging following the logging protocol
+
+For New Features:
+
+Describe the desired functionality: "Users should be able to reset their password via email"
+Trust the prototype-then-integrate approach
+Commander will coordinate testing and integration
+
+For Refactoring:
+
+Explain what's wrong with current code: "The API layer is hard to test"
+Describe desired improvements: "Make it more modular and testable"
+Commander will plan the refactoring strategy
+
+For Questions About Progress:
+
+"What's done so far on feature X?"
+"Which Soldier is working on the auth system?"
+"Show me what Soldier-2 has been doing"
+
+Workflow Tips
+
+Start with Small Tasks: Test the system with smaller requests first to ensure everything is working properly.
+Review Logs Periodically: Ask Commander to summarize recent activity to stay informed.
+Provide Feedback: If you notice patterns or issues, tell Commander so they can update rules.
+Trust the Process: The debug-heavy and prototype-first approaches might feel slow initially, but they prevent bigger issues and rework.
+Leverage Specialization: As Soldiers specialize in different areas, related tasks will get faster due to context reuse.
+
+Monitoring
+Check these periodically:
+
+/agents/commander/commander_state.json - overall project status
+/agents/soldiers/*/status.json - individual Soldier health
+/agents/soldiers/*/log.md - detailed work history
+
+Health Indicators:
+
+All Soldiers showing "idle" or "working" = healthy
+Soldiers showing "error" = needs attention
+Soldiers stuck in "working" too long = might be blocked
+
+Troubleshooting
+If a Soldier isn't responding:
+
+Check if the file watcher is running
+Verify task.json is being written correctly
+Check Soldier's log.md for errors
+
+If tasks are failing repeatedly:
+
+Ask Commander about the failure pattern
+Consider if the task needs different context
+Check if rules.md needs clarification
+
+If work is slow:
+
+Verify tasks are properly parallelized
+Check if Soldiers have appropriate context loaded
+Consider if more Soldiers are needed
+
+Example Interaction Flow
+You: "Add a dark mode toggle to the app"
+Commander: "I'll break this down into tasks:
+
+Create dark mode theme variables
+Implement theme context and provider
+Add toggle component to navbar
+Update all components to respect theme
+
+Assigning to Soldier-1 (Frontend Specialist) since they have all the frontend context loaded. Estimated time: 30-45 minutes."
+[Later]
+Commander: "Dark mode feature complete. Soldier-1 built a prototype in /sandbox/dark-mode/, tested it, then integrated into the main app. Files modified:
+
+src/styles/themes.css (new dark theme variables)
+src/context/ThemeContext.js (new)
+src/components/Navbar.jsx (added toggle)
+src/App.js (wrapped with ThemeProvider)
+
+The toggle is in the navbar's top-right corner. Full implementation details in /agents/soldiers/soldier-1/log.md.
+Would you like me to add dark mode support to any additional components, or implement theme persistence across sessions?"
+Advanced Usage
+Scaling Up:
+
+Add more Soldiers as project complexity grows
+Specialize Soldiers in specific domains
+Use codebase partitioning for very large projects
+
+Complex Workflows:
+
+Commander can chain tasks across Soldiers
+Use dependencies in task.json for sequential work
+Soldiers can work in parallel on independent features
+
+Integration with Tools:
+
+Soldiers can use any tools available in their environment
+Install testing frameworks, linters, bundlers as needed
+Configure tools in rules.md for consistency
+
+
+Summary of Key Improvements
+1. Context Management
+
+Explicit instructions on loading full context for debugging
+Codebase partitioning strategy for large projects
+Context tracking via context_cache.json
+Context reuse through specialized Soldiers
+
+2. Debugging Methodology
+
+Comprehensive logging protocol (log everything)
+Systematic approach: hypothesis → test → analyze → fix
+Error handling requirements: try-catch everywhere, never fail silently
+Debug output examples in multiple languages
+
+3. Feature Development
+
+Prototype-first approach for large features
+Staged integration with testing checkpoints
+Risk reduction through isolation testing
+Clear integration planning before merging
+
+4. Communication & Monitoring
+
+status.json for real-time Soldier monitoring
+Enhanced question system with priorities
+Detailed logging format with timestamps and structure
+Commander aggregation for user-friendly reporting
+
+5. Error Recovery
+
+Explicit reassignment protocol when Soldiers fail
+Failure documentation requirements
+Decision framework for retry vs. reassign
+Learning from failures to improve future assignments
+
+6. System Optimization
+
+Parallel execution for independent tasks
+Context reuse for related tasks
+Log summarization to prevent bloat
+Codebase mapping for better routing decisions
+
+This enhanced system should provide a robust, efficient, and scalable multi-agent development environment that follows best practices for debugging, feature development, and context management.
