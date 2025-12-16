@@ -2,49 +2,49 @@
 
 ## Overview
 
-- **Commander** - Talks to you, assigns tasks to soldiers
-- **Soldiers** - Numbered workers (soldier-1, soldier-2, etc.) that do the actual coding
+- **Legate** - Talks to you, assigns tasks to legionaries
+- **Legionaries** - Numbered workers (legionary-1, legionary-2, etc.) that do the actual coding
 
 ---
 
 ## Quick Start
 
-### 1. Start Commander
-Open a Cursor window, paste the Commander prompt.
+### 1. Start Legate
+Open a Cursor window, paste the Legate prompt.
 
-### 2. Start Soldiers
-For each soldier you want, open a new Cursor window and paste the Soldier prompt with their number:
+### 2. Start Legionaries
+For each legionary you want, open a new Cursor window and paste the Legionary prompt with their number:
 
-> "You are soldier-1"
+> "You are legionary-1"
 
 or
 
-> "You are soldier 2"
+> "You are legionary 2"
 
-The soldier will:
-- Create its own directory at `agents/soldiers/soldier-1/`
+The legionary will:
+- Create its own directory at `agents/legionaries/legionary-1/`
 - Create all its files
 - Register itself
 - Start watching for tasks
 
 ### 3. Use the System
-Talk to Commander. It assigns tasks. Soldiers execute automatically.
+Talk to Legate. It assigns tasks. Legionaries execute automatically.
 
 ---
 
-## How Many Soldiers?
+## How Many Legionaries?
 
 Start with 1-3 for small projects. Add more as needed.
 
-You can have multiple soldiers doing similar work - they're generalists by default.
+You can have multiple legionaries doing similar work - they're generalists by default.
 
 ---
 
 ## Specialization (Optional)
 
-For large codebases, Commander can assign soldiers to specific areas:
-- "soldier-1 and soldier-2, focus on frontend"
-- "soldier-3, you handle the backend"
+For large codebases, Legate can assign legionaries to specific areas:
+- "legionary-1 and legionary-2, focus on frontend"
+- "legionary-3, you handle the backend"
 
 This is **optional**. Small projects don't need it.
 
@@ -52,32 +52,32 @@ This is **optional**. Small projects don't need it.
 
 ## Example Session
 
-**You to Commander:**
+**You to Legate:**
 > "Add a pause menu"
 
-**Commander:**
-> "Assigned to soldier-1. They're working on it."
+**Legate:**
+> "Assigned to legionary-1. They're working on it."
 
-[soldier-1 automatically wakes up, does the work]
+[legionary-1 automatically wakes up, does the work]
 
-**Commander (after completion):**
-> "Done. soldier-1 created pause_menu.tscn and integrated it."
+**Legate (after completion):**
+> "Done. legionary-1 created pause_menu.tscn and integrated it."
 
 ---
 
 ## Checking Status
 
-Ask Commander:
-- "What's soldier-1 doing?"
-- "Are there any stuck soldiers?"
+Ask Legate:
+- "What's legionary-1 doing?"
+- "Are there any stuck legionaries?"
 - "Show me what's been completed"
 
 ---
 
-## Adding More Soldiers
+## Adding More Legionaries
 
-Just start a new Cursor window with the soldier prompt:
-> "You are soldier-4"
+Just start a new Cursor window with the legionary prompt:
+> "You are legionary-4"
 
 It will bootstrap itself and register.
 
@@ -85,15 +85,15 @@ It will bootstrap itself and register.
 
 ## Troubleshooting
 
-**Soldier not responding:**
+**Legionary not responding:**
 - Check its status.json
 - Check if file watcher is running
-- Restart the soldier window
+- Restart the legionary window
 
-**Soldier confused about identity:**
-- Tell it: "You are soldier-X" 
+**Legionary confused about identity:**
+- Tell it: "You are legionary-X" 
 - Have it re-read its profile.json
 
 **Task not picked up:**
 - Verify task.json was written
-- Check soldier's status.json
+- Check legionary's status.json
