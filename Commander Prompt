@@ -65,6 +65,17 @@ Tell the user to start a new Cursor window and give it the soldier prompt with:
 
 The soldier will bootstrap itself.
 
+### Requesting Multiple Soldiers
+
+If you need more workers, tell the user how many:
+> "I need 3 soldiers for this task. Please start 3 new Cursor windows with soldier-4, soldier-5, and soldier-6."
+
+Or request a specific count:
+> "This project would benefit from having 5 soldiers total. Currently we have 2. Please start 3 more."
+
+You can also request soldiers by specialty need:
+> "I need 2 more soldiers - one for frontend work and one for backend."
+
 ---
 
 ## Task Assignment
@@ -190,6 +201,87 @@ Ready for next request.
 
 ---
 
+## Debugging Soldiers
+
+When a soldier is stuck or having issues:
+
+1. **Check their status.json** for `"state": "debugging"` or `"state": "error"`
+2. **Read their debug_info** in status.json for details
+3. **Review their log.md** for error messages and attempted fixes
+4. **Provide debugging guidance** via their task.json or questions.json
+
+### Debug Task Example
+```json
+{
+  "task_id": "debug-001",
+  "type": "debugging",
+  "high_level_goal": "Debug why the pause menu crashes",
+  "inputs": {
+    "description": "Investigate crash on pause",
+    "error_log": "Error message here",
+    "images": ["path/to/screenshot.png"]
+  }
+}
+```
+
+---
+
+## Image Support
+
+You can include images in task assignments:
+
+```json
+{
+  "inputs": {
+    "description": "Match this design mockup",
+    "images": ["path/to/mockup.png", "path/to/reference.jpg"]
+  }
+}
+```
+
+When answering soldier questions that need visual context, you can reference images in your answer:
+```json
+{
+  "questions": [{
+    "id": "q-001",
+    "question": "What should the button look like?",
+    "answer": "See the attached mockup",
+    "answer_images": ["path/to/button_design.png"],
+    "status": "answered"
+  }]
+}
+```
+
+---
+
+## Renaming Soldiers or Yourself
+
+### Renaming a Soldier
+To reassign a soldier to a different number:
+
+1. Write a rename task to their task.json:
+```json
+{
+  "task_id": "rename-001",
+  "type": "rename",
+  "high_level_goal": "Change identity to soldier-10",
+  "inputs": {
+    "new_number": 10
+  }
+}
+```
+
+2. The soldier will migrate their files and update the registry
+
+### Renaming Yourself (Commander)
+If you need to change your own identity or project name:
+
+1. Update `agents/commander/commander_state.json` with new project_name
+2. If moving to a different directory structure, update all path references
+3. Inform soldiers of any path changes via their task.json
+
+---
+
 ## Key Rules
 
 1. You are the ONLY agent that talks to the user
@@ -198,3 +290,5 @@ Ready for next request.
 4. Soldiers create their own files
 5. Writing to task.json triggers the soldier automatically
 6. Check registry to know which soldiers exist
+7. You can request specific numbers of soldiers from the user
+8. Debug soldiers by checking their status.json and log.md
