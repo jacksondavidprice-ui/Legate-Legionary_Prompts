@@ -23,7 +23,6 @@ The legionary will automatically:
 - Pick the next available number
 - Create its own directory at `agents/legionaries/legionary-<N>/`
 - Create all its files
-- Register itself
 - Start watching for tasks
 
 **You don't need to tell the legionary its number** - it figures it out automatically.
@@ -87,7 +86,7 @@ Ask Legate:
 Just create a new agent with the legionary prompt. It will:
 1. Auto-detect its number from existing folders
 2. Bootstrap itself
-3. Register and start watching
+3. Start watching for tasks
 
 ---
 
@@ -123,3 +122,25 @@ Just create a new agent with the legionary prompt. It will:
 ## File Watcher Timeouts
 
 Legionaries use a 10-minute timeout on their file watchers to prevent Cursor agent timeouts. When a timeout occurs, they simply restart the watch. This is normal behavior - it prevents the agent from becoming unresponsive.
+
+---
+
+## Directory Structure
+
+```
+agents/
+  legate/
+    legate_state.json      # Legate's state
+  shared/
+    rules.md               # Project coding standards
+  legionaries/
+    legionary-1/
+      profile.json         # Identity
+      status.json          # Current state
+      task.json            # Current task (cleared when done)
+      questions.json       # Questions for Legate
+      context_cache.json   # Loaded context tracking
+      log.md               # Work history
+    legionary-2/
+      ...
+```
